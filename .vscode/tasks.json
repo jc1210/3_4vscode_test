@@ -1,0 +1,159 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mkdir-build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "build"
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "if not exist build mkdir build"
+                ]
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "configure-debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "D:/qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "-G",
+                "MinGW Makefiles",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_PREFIX_PATH=D:/qt/6.6.3/mingw_64",
+                "-DCMAKE_MAKE_PROGRAM=D:/qt/Tools/mingw1120_64/bin/mingw32-make.exe",
+                ".."
+            ],
+            "dependsOn": [
+                "mkdir-build"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "D:/qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "--build",
+                ".",
+                "--config",
+                "Debug",
+                "--parallel",
+                "7"
+            ],
+            "dependsOn": [
+                "configure-debug"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "run-debug",
+            "type": "process",
+            "options": {
+                "cwd": "${workspaceFolder}/build/Debug"
+            },
+            "command": "${fileBasenameNoExtension}.exe",
+            "dependsOn": [
+                "build-debug"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "configure-release",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "D:/qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "-G",
+                "MinGW Makefiles",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_PREFIX_PATH=D:/qt/6.6.3/mingw_64",
+                "-DCMAKE_MAKE_PROGRAM=D:/qt/Tools/mingw1120_64/bin/mingw32-make.exe",
+                ".."
+            ],
+            "dependsOn": [
+                "mkdir-build"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-release",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "D:/qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "--build",
+                ".",
+                "--config",
+                "Release",
+                "--parallel",
+                "7"
+            ],
+            "dependsOn": [
+                "configure-release"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "run-release",
+            "type": "process",
+            "options": {
+                "cwd": "${workspaceFolder}/build/Release"
+            },
+            "command": "${fileBasenameNoExtension}.exe",
+            "dependsOn": [
+                "build-release"
+            ],
+            "group": "test"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "rmdir",
+            "args": [
+                "/s",
+                "/q",
+                "build"
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "rmdir /s /q build"
+                ]
+            },
+            "problemMatcher": [],
+            "group": "none"
+        }
+    ]
+}

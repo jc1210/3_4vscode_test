@@ -1,0 +1,5 @@
+D:/qt/myproject/vsc2/build/CMakeFiles/vsc2.dir
+D:/qt/myproject/vsc2/build/CMakeFiles/edit_cache.dir
+D:/qt/myproject/vsc2/build/CMakeFiles/rebuild_cache.dir
+D:/qt/myproject/vsc2/build/CMakeFiles/vsc2_autogen_timestamp_deps.dir
+D:/qt/myproject/vsc2/build/CMakeFiles/vsc2_autogen.dir

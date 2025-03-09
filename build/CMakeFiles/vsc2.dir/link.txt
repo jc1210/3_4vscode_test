@@ -1,0 +1,3 @@
+D:\qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\vsc2.dir/objects.a
+D:\qt\Tools\mingw1120_64\bin\ar.exe qc CMakeFiles\vsc2.dir/objects.a @CMakeFiles\vsc2.dir\objects1.rsp
+D:\qt\Tools\mingw1120_64\bin\c++.exe -g -mwindows -Wl,--whole-archive CMakeFiles\vsc2.dir/objects.a -Wl,--no-whole-archive -o Debug\vsc2.exe -Wl,--out-implib,libvsc2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\vsc2.dir\linkLibs.rsp
